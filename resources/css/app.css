@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --header-height : 70px;
+        --sidebar-width : 250px;
+    }
+
+    html {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        @apply bg-slate-100 relative;
+    }
+
+    header {
+        width: calc(100% - var(--sidebar-width));
+        @apply fixed ms-[--sidebar-width] h-[--header-height] bg-blue-600 z-10 p-4;
+    }
+
+    aside {
+        @apply fixed h-[643px] bg-white z-10 p-4;
+    }
+
+    main {
+        width: calc(100% - var(--sidebar-width));
+        @apply absolute ms-[--sidebar-width] mt-[--header-height] p-4
+    }
+
+    table {
+        @apply rounded-md table-auto border-collapse text-sm bg-white;
+    }
+    
+    th, td {
+        @apply align-top py-3 px-4 text-left border-b border-gray-200 border-x first:border-l-0 last:border-r-0
+    }
+
+    th {
+        @apply font-medium first:rounded-tl-md last:rounded-tr-md
+    }
+}
+
+@layer components {
+    .aside-opened {
+        @apply w-[--sidebar-width]
+    }
+
+    .aside-closed {
+        @apply w-[5rem]
+    }
+
+    .form-search {
+        @apply relative rounded-md
+    }
+
+    .form-search input {
+        @apply block px-4 py-2 w-full rounded-md border-0 ring-1 ring-inset ring-gray-200 focus:ring-0 focus:ring-inset focus:ring-blue-600
+    }
+
+    .form-search button {
+        @apply absolute inset-y-0 right-0 pl-4 pr-5 ring-1 ring-inset ring-gray-200 bg-slate-50 rounded-r-md hover:bg-gray-100
+    }
+
+    .button{
+        @apply  px-3 py-2 text-white rounded-md;
+    }
+    
+
+    .input-group {
+        @apply rounded-md w-full px-3 py-2 border border-gray-300
+    }
+
+    /* Header */
+    .header-container {
+        @apply flex items-center h-full w-full
+    }
+
+    .menu-icon {
+        @apply flex items-center justify-center text-4xl text-white pr-4 align-middle
+    }
+
+    .username {
+        @apply justify-self-end
+    }
+
+    /* Sidebar */
+
+    .aside-container {
+        @apply h-full
+    }
+
+    /* .navigation {
+        height: calc(100% - 70px)
+    } */
+
+    /* .nav-list {
+        @apply grid h-full items-start
+    } */
+
+    .nav-item {
+        @apply  rounded-md mb-4 py-2 ;
+        @apply hover:bg-blue-100 hover:text-blue-600;
+    }
+
+    .active {
+        @apply bg-blue-100 text-blue-600
+    }
+
+    .nav-link {
+        @apply flex items-center text-lg
+    }
+
+    .text-hidden {
+        @apply hidden
+    }
+
+    .nav-icon {
+        @apply flex justify-center text-2xl min-w-[2.7rem] !important
+    }
+
+    /* Main */
+    .page-title {
+        @apply text-2xl align-middle pb-4 pl-4;
+    }
+
+    .section {
+        @apply bg-white rounded-md w-full p-4 border border-gray-200
+    }
+
+    .table-section {
+        @apply p-0 bg-transparent
+    }
+
+    .edit-icon {
+        @apply text-2xl text-blue-500 
+    }
+}
