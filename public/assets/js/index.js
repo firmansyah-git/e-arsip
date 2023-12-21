@@ -1,18 +1,10 @@
 const menu = document.querySelector('.menu')
 const aside = document.getElementById('sidebar')
-const brand = document.querySelector('.brand')
-const navText = document.querySelectorAll('.nav-text')
+const header = document.getElementById('header')
+const main = document.getElementById('main')
 
 menu.addEventListener('click', () => {
-    if (aside.classList.contains('aside-opened')) {
-        aside.classList.remove('aside-opened')
-        aside.classList.add('aside-closed')
-        brand.classList.add('hidden')
-        navText.classList.add('hidden')
-    } else {
-        aside.classList.add('aside-opened')
-        aside.classList.remove('aside-closed')
-        brand.remove.add('hidden')
-        navText.remove.add('hidden')
-    }
+    aside.classList.toggle('aside-opened')
+    header.classList.toggle('header')
+    main.classList.toggle('main')
 })
