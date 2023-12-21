@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SuratController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->nam
 Route::post('/login', [AuthController::class, 'authenticate']);  
 Route::post('/logout', [AuthController::class, 'logout']);  
 
-Route::get('/arsip', function () {
-    return view('pages.arsip');
-});
+Route::resource('/arsip', SuratController::class);
 
 Route::get('/account', function () {
     return view('pages.account');

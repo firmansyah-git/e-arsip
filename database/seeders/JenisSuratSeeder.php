@@ -12,8 +12,12 @@ class JenisSuratSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\RoleUser::create([
-            'role' => 'admin',
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat undangan',
+        ]);
+
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat dinas',
         ]);
     }
 }

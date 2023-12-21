@@ -75,24 +75,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($surat as $surat)    
                     <tr>
                         <td class="text-center">
-                            <a href="#">
+                            <a href="/arsip/{{ $surat->id }}">
                                 <i class='bx bx-show edit-icon'></i>
                             </a>
                         </td>
                         <td class="text-center">1</td>
-                        <td>556/585/IV.3/2023</td>
-                        <td>14 Agustus 2023</td>
-                        <td>PT. Tirta Sriwijaya Maju (Perseroda)</td>
-                        <td>Partisipasi dalam rangka mensukseskan kegiatan Parade Perahu Motor Hias</td>
-                        <td>Surat Keluar</td>
-                        <td>Surat Undangan</td>
+                        <td>{{ $surat->nomor_surat }}</td>
+                        <td>{{ $surat->tanggal }}</td>
+                        <td>{{ $surat->nama_instansi }}</td>
+                        <td>{{ $surat->perihal }}</td>
+                        <td>
+                            @if ( $surat->kategori == 'surat_masuk')
+                                Surat masuk
+                            @else 
+                                Surat keluar
+                            @endif
+                        </td>
+                        <td>{{ $surat->jenisSurat->jenis_surat }}</td>
                         <td>
                             <button class="badge bg-blue-500"><i class='bx bxs-download'></i></button>
                         </td>
                     </tr>
-                    <tr>
+                    @endforeach
+                    {{-- <tr>
                         <td class="text-center">
                             <a href="#">
                                 <i class='bx bx-show edit-icon'></i>
@@ -125,19 +133,19 @@
                         <td>
                             <button class="badge bg-blue-500"><i class='bx bxs-download'></i></button>
                         </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
         </section>
     </div>
 
 
-    <div class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 overflow-y-scroll py-8 hidden" id="addSurat">
+    <div class="modal fixed inset-0 bg-gray-900 bg-opacity-50 z-20 overflow-y-scroll py-8 hidden" id="addSurat">
         <div class="flex items-center justify-center min-h-screen">
             <div class="relative bg-white w-1/2 rounded-lg shadow-lg p-8">
               <!-- Konten Modal -->
               <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold">Edit Surat</h2>
+                <h2 class="text-xl font-semibold">Tambah Data Surat</h2>
                     <button onclick="toggleModal('addSurat')" class="text-gray-500 hover:text-gray-700 focus:outline-none">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -146,18 +154,19 @@
               </div>
               <hr>
               <div class="mt-4">
-                  <form action="" method="post">
+                  <form action="/arsip" method="post">
+                    @csrf
                     <div class="mb-4">
                         <label for="nomor_surat" class="label">Nomor Surat</label>
                         <input type="text" name="nomor_surat" id="nomor_surat" class="input-group">
                     </div>
                     <div class="mb-4">
-                        <label for="tanggal" class="label">Tanggal</label>
-                        <input type="date" name="tanggal" id="tanggal" class="input-group">
-                    </div>
-                    <div class="mb-4">
                         <label for="nama_instansi" class="label">Nama Instansi</label>
                         <input type="text" name="nama_instansi" id="nama_instansi" class="input-group">
+                    </div>
+                    <div class="mb-4">
+                        <label for="tanggal" class="label">Tanggal</label>
+                        <input type="date" name="tanggal" id="tanggal" class="input-group">
                     </div>
                     <div class="mb-4">
                         <label for="perihal" class="label">Perihal</label>
@@ -177,11 +186,12 @@
                             </select>
                         </div>
                         <div>
-                            <label for="" class="label">Jenis Surat</label>
-                            <select name="" id="" class="form-select">
+                            <label for="jenis_surat_id" class="label">Jenis Surat</label>
+                            <select name="jenis_surat_id" id="jenis_surat_id" class="form-select">
                                 <option value="">Pilih kategori surat</option>
-                                <option value="surat_masuk">Surat masuk</option>
-                                <option value="surat_keluar">Surat keluar</option>
+                                @foreach ($jenis_surat as $item)
+                                    <option value="{{ $item->id }}">{{ $item->jenis_surat }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -190,8 +200,8 @@
                         <input type="text" name="file_surat" id="file_surat" class="input-group">
                     </div>
                     <div class="">
-                        <button class="button bg-blue-600">Ubah</button>
-                        <button class="button bg-red-500">Hapus</button>
+                        <button type="submit" class="button bg-blue-600">Simpan</button>
+                        <button type="reset" class="button bg-red-500">Hapus</button>
                     </div>
                 </form>
             </div>
@@ -205,27 +215,6 @@
             modal.classList.toggle('hidden');
         }
 
-        // Panggil fungsi toggleModal saat tombol diklik
-        document.addEventListener("DOMContentLoaded", function() {
-            var openModalButton = document.querySelector('.modal-open-button');
-            var closeModalButton = document.querySelector('.modal-close-button');
-            var modal = document.querySelector('.modal');
-
-            openModalButton.addEventListener('click', function() {
-                toggleModal('myModal');
-            });
-
-            closeModalButton.addEventListener('click', function() {
-                toggleModal('myModal');
-            });
-
-            // Jika mengklik di luar modal, tutup modal
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    toggleModal('myModal');
-                }
-            });
-        });
 
 
         document.querySelectorAll('.advanced-search button').forEach(item => {
