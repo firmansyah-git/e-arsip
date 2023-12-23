@@ -13,8 +13,8 @@ class SuratController extends Controller
      */
     public function index()
     {
-        return view('pages.arsip', [
-            'surat' => Surat::all(),
+        return view('pages.arsip.index', [
+            'surats' => Surat::paginate(10),
             'jenis_surat' => JenisSurat::all()
         ]);
     }
@@ -24,7 +24,9 @@ class SuratController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.arsip.create', [
+            'jenis_surat' => JenisSurat::all()
+        ]);
     }
 
     /**
@@ -53,18 +55,20 @@ class SuratController extends Controller
      */
     public function show(Surat $arsip)
     {
-        return view('pages.detail', [
-           'surat' => $arsip,
-           'jenis_surat' => JenisSurat::all()
+        return view('pages.arsip.detail', [
+           'surat' => $arsip
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Surat $arsip)
     {
-        //
+        return view('pages.arsip.edit', [
+            'surat' => Surat::find($arsip->id),
+            'jenis_surat' => JenisSurat::all()
+        ]);
     }
 
     /**

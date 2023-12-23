@@ -38,11 +38,11 @@
     }
 
     table {
-        @apply rounded-md table-auto border-collapse text-sm bg-white w-full;
+        @apply table-auto border-collapse text-sm bg-white w-full;
     }
     
     th, td {
-        @apply align-top py-3 px-4 text-left border-b border-gray-300 border-x first:border-l-0 last:border-r-0
+        @apply align-top py-3 px-4 text-left border border-gray-300 border-x first:border-l-0 last:border-r-0
     }
 
     th {
@@ -182,5 +182,9 @@
 
     .label {
         @apply block mb-2 text-sm md:text-base
+    }
+
+    .pagination {
+        @apply p-2 bg-white
     }
 }

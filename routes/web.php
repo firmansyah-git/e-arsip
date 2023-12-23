@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SuratController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.dashboard');
-})->middleware('auth');
+})->middleware('auth')->name('dashboard');
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);  
 Route::post('/logout', [AuthController::class, 'logout']);  
 
-Route::resource('/arsip', SuratController::class);
+Route::resource('/arsip', SuratController::class)->name('*', 'arsip');
+Route::resource('/user', UserController::class)->name('user', '*');
+Route::get('/user/search', [UserController::class, 'search'])->name('user');
 
 Route::get('/account', function () {
     return view('pages.account');

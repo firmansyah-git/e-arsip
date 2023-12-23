@@ -5,5 +5,5 @@
 
     <h1 class="text-black text-lg md:text-2xl p-0 flex items-center grow align-middle tracking-wider font-medium">E-ARSIP</h1>
 
-    <a href="/account"  class="text-black pe-4 leading-none align-middle text-sm md:text-base">user</a>
+    <a href="/account"  class="text-black pe-4 leading-none align-middle text-sm md:text-base">{{ auth()->user()->username }}</a>
 </div>

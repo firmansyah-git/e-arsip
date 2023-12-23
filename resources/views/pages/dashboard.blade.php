@@ -5,7 +5,7 @@
         <h2 class="page-title">Dashboard</h2>
         <section class="section mb-4 p-0">
             <div class="p-4">
-                <h2>Selamat datang <span>user</span></h2>
+                <h2>Selamat datang {{ auth()->user()->username }}</h2>
             </div>
         </section>
         <section class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
