@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,12 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);  
-Route::post('/logout', [AuthController::class, 'logout']);  
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');  
 
-Route::resource('/arsip', SuratController::class)->name('*', 'arsip');
-Route::resource('/user', UserController::class)->name('user', '*');
+Route::resource('/arsip', SuratController::class)->middleware('auth');
+
+Route::resource('/arsip', SuratController::class)->except(['index', 'show'])->middleware(IsAdmin::class);
+Route::resource('/user', UserController::class)->except(['show', 'edit', 'update'])->middleware(IsAdmin::class);
 Route::get('/user/search', [UserController::class, 'search'])->name('user');
 
 Route::get('/account', function () {

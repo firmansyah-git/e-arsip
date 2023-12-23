@@ -12,7 +12,10 @@
                         <button type="submit">Cari</button>
                     </div>
                 </form>
-                <a href="/arsip/create" class="button bg-blue-500">Tambah</a>
+                @can('manageAdmin', Auth::user())
+                    <a href="/arsip/create" class="button bg-blue-500">Tambah</a>
+                @endcan
+
             </div>
             <div class="advanced-search">
                 <button class="hover:bg-gray-100 flex items-center justify-between w-full py-2 px-4 mb-2 focus:outline-none">

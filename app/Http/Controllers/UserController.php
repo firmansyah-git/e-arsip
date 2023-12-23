@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         return view('pages.kelola-user.index', [
-            'users' => User::paginate(2)
+            'users' => User::where('role_id', 2)->paginate(10)
         ]);
     }
 

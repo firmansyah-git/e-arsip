@@ -20,18 +20,20 @@
                     
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('arsip') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('arsip*') ? 'active' : '' }}">
                 <a href="/arsip" class="nav-link">
                     <i class='bx bxs-file-blank nav-icon'></i>
                     <span class="nav-text">Arsip</span>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('user') ? 'active' : '' }}">
+            @can('manageAdmin', Auth::user())
+            <li class="nav-item {{ Request::is('user*') ? 'active' : '' }}">
                 <a href="/user" class="nav-link">
                     <i class='bx bxs-user nav-icon'></i>
                     <span class="nav-text">Kelola User</span>
                 </a>
             </li>
+            @endcan
             <li class="nav-item self-end">
                 <form action="/logout" method="post" class="nav-link">
                     @csrf

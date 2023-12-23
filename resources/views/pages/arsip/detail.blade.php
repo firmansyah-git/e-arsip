@@ -12,6 +12,7 @@
             <p>{{ $surat->jenisSurat->jenis_surat }}</p>    
             <p>{{ $surat->file_surat }}</p>    
 
+            @can('manageAdmin', Auth::user())
             <div class="flex gap-x-2">
                 <a href="/arsip/{{ $surat->id }}/edit" class="button bg-blue-500">Ubah</a>
                 <form action="/arsip/{{ $surat->id }}" method="post">
@@ -20,8 +21,7 @@
                     <button type="submit" class="button bg-red-500">Hapus</button>
                 </form>
             </div>
-
+            @endcan
         </section>
-
     </div>
 @endsection
