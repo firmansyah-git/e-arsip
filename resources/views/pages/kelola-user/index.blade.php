@@ -4,9 +4,17 @@
 
     <div class="main-container">
         <h2 class="page-title">Kelola User</h2>
+        @if(session('success'))    
+        <div class="session session-success" id="session">
+            <p class="session-message">{{ session('success') }}</p>
+            <button onclick="toggleAlert('session')" class="close-button">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        @endif
         <section class="section mb-4 p-0">
             <div class="flex gap-2 mb-2 pt-4 px-4 pb-2">
-                <form action="/buku/search" method="get" class="grow">
+                <form action="/user" method="get" class="grow">
                     @csrf
                     <div class="form-search">
                         <input type="text" name="search" id="search" placeholder="Cari user">
@@ -21,7 +29,7 @@
             <div class="pagination rounded-t-md">
                 {{ $users->links() }}
             </div>
-            <table class="table">
+            <table class="table table-auto">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -33,6 +41,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if($users->isNotEmpty())
                     @foreach ($users as $user)    
                     <tr>
                         <td>{{ $loop->iteration }}</td>
@@ -41,21 +50,33 @@
                         <td>{{ $user->nama }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <form action="/user/{{ $user->id }}" method="post">
+                            <form  id="deleteForm" action="/user/{{ $user->id }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="badge bg-red-500">
+                                <button type="submit" class="badge bg-red-500" onclick="return confirm('Apakah anda ingin menghapus user ini?')">
                                     <i class='bx bx-trash'></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
+                    @else
+                    <tr>
+                        <td colspan="6" class="text-center">Data tidak ditemukan</td>
+                    </tr>
+                    @endif
                 </tbody>
             </table>
             <div class="pagination rounded-b-md">
                 {{ $users->links() }}
             </div>
         </section>
-    </div>  
+    </div> 
+
+    <script>
+        function toggleAlert(alertId) {
+            var alert = document.getElementById(alertId);
+            alert.classList.toggle('hidden');
+        }
+    </script>
 @endsection

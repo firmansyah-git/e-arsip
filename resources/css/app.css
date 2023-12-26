@@ -92,7 +92,7 @@
     
 
     .input-group {
-        @apply rounded-md w-full px-4 py-2 border border-gray-300 text-sm md:text-base
+        @apply rounded-md w-full px-4 py-2 border-0 ring-1 ring-gray-300 text-sm md:text-base
     }
 
     /* Header */
@@ -186,5 +186,36 @@
 
     .pagination {
         @apply p-2 bg-white
+    }
+
+    .is-invalid {
+        @apply ring-2 ring-red-500
+    }
+
+    .invalid-feedback {
+        @apply text-sm text-red-500 mt-1
+    }
+
+    .list-table tr td {
+        @apply border-0
+    }
+
+    .session {
+        @apply opacity-70 rounded-md p-3 mb-4 flex justify-between
+    }
+
+    .session-success {
+        @apply bg-green-400 border-2 border-green-600 
+    }
+
+    .session-failed {
+        @apply bg-red-400 border-2 border-red-600 lg:w-1/3
+    }
+
+    .session-success .session-message{
+        @apply flex items-center
+    }
+    .session-success .close-button{
+        @apply text-gray-700 text-3xl hover:text-gray-900 m-0 p-0 flex items-center focus:outline-none 
     }
 }

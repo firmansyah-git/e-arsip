@@ -14,7 +14,7 @@ class SuratController extends Controller
     public function index()
     {
         return view('pages.arsip.index', [
-            'surats' => Surat::paginate(10),
+            'surats' => Surat::filter(request(['search', 'kategori', 'jenis', 'tahun']))->with('jenisSurat')->paginate(10),
             'jenis_surat' => JenisSurat::all()
         ]);
     }
@@ -47,7 +47,7 @@ class SuratController extends Controller
 
         Surat::create($validateData);
 
-        return redirect('arsip')->with('success', 'Data surat berhasil ditambah');
+        return redirect('arsip')->with('success', 'Data surat berhasil ditambahkan');
     }
 
     /**

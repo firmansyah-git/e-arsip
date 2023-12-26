@@ -2,8 +2,8 @@
 
 @section('container')
     @if (session('failed'))
-    <div class="bg-red-500 opacity-70 rounded-md p-4 lg:w-1/3 mb-4">
-        <p class="opacity-100">{{ session('failed') }}</p>
+    <div class="session session-failed">
+        <p class="session-message">{{ session('failed') }}</p>
     </div>
     @endif
     <div class="bg-white rounded-md p-8 shadow lg:w-1/3">
@@ -23,8 +23,8 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="username" class="label">Username / Email / NIK</label>
-                    <input type="text" name="username" id="username" class="input-group" placeholder="Masukkan username / email / NIK">
+                    <label for="username" class="label">Username</label>
+                    <input type="text" name="username" id="username" class="input-group" placeholder="Masukkan username">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="label">Password</label>

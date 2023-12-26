@@ -41,4 +41,14 @@ class User extends Authenticatable
 
 
     public $timestamps = false;
+
+    public function scopeFilter($query, array $filter): void
+    {
+        $query->when($filter['search'] ?? false, function($query, $search){
+            return $query->where('nik', 'like', '%'. $search .'%')
+                ->orWhere('username', 'like', '%'. $search .'%')
+                ->orWhere('nama', 'like', '%'. $search .'%')
+                ->orWhere('email', 'like', '%'. $search .'%');
+        });
+    }
 }

@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         return view('pages.kelola-user.index', [
-            'users' => User::where('role_id', 2)->paginate(10)
+            'users' => User::where('role_id', 2)->filter(request(['search']))->paginate(10)
         ]);
     }
 
@@ -43,7 +43,7 @@ class UserController extends Controller
 
         User::create($validateData);
 
-        return redirect('user')->with('success', 'User berhasil ditambah');
+        return redirect('user')->with('success', 'User berhasil ditambahkan');
     }
 
     /**
