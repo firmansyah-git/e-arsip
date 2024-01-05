@@ -3,7 +3,7 @@
 @section('container')
 
     <div class="main-container">
-        <h2 class="page-title">Kelola User</h2>
+        <h2 class="page-title">Kelola Akun Pegawai</h2>
         @if(session('success'))    
         <div class="session session-success" id="session">
             <p class="session-message">{{ session('success') }}</p>
@@ -17,7 +17,7 @@
                 <form action="/user" method="get" class="grow">
                     @csrf
                     <div class="form-search">
-                        <input type="text" name="search" id="search" placeholder="Cari user">
+                        <input type="text" name="search" id="search" placeholder="Cari akun pegawai">
                         <button type="submit">Cari</button>
                     </div>
                 </form>

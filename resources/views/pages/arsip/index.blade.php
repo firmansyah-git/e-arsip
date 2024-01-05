@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     @can('manageAdmin', Auth::user())
-                        <a href="/arsip/create" class="button bg-blue-500">Tambah</a>
+                        <a href="/arsip/create" class="button bg-blue-500 hover:bg-blue-600">Tambah</a>
                     @endcan
                 </div>
                 <div class="advanced-search">
@@ -110,7 +110,9 @@
                         </td>
                         <td>{{ $surat->jenisSurat->jenis_surat }}</td>
                         <td>
-                            <button class="badge bg-blue-500"><i class='bx bxs-download'></i></button>
+                            <a href="download/{{ $surat->file_surat }}">
+                                <button class="badge bg-green-500 hover:bg-green-600"><i class='bx bxs-download'></i></button>
+                            </a>
                         </td>
                     </tr>
                     @endforeach

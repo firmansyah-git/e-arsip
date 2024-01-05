@@ -19,5 +19,27 @@ class JenisSuratSeeder extends Seeder
         \App\Models\JenisSurat::create([
             'jenis_surat' => 'Surat dinas',
         ]);
+
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat keputusan',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat instruksi',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat tugas',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat edaran',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Surat panggilan',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Nota dinas',
+        ]);
+        \App\Models\JenisSurat::create([
+            'jenis_surat' => 'Pengumuman',
+        ]);
     }
 }

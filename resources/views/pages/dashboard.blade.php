@@ -15,7 +15,7 @@
                 </div>
                 <div class="">
                     <h2 class="archive-type">Surat Masuk</h2>
-                    <span class="number-of-archives text-red-500">30</span>
+                    <span class="number-of-archives text-red-500">{{ $surat_masuk }}</span>
                 </div>
             </div>
             <div class="card cursor-pointer"  onclick="location.href = '/arsip?kategori=surat_keluar' ">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="">
                     <h2 class="archive-type">Surat Keluar</h2>
-                    <span class="number-of-archives text-blue-500">30</span>
+                    <span class="number-of-archives text-blue-500">{{ $surat_keluar }}</span>
                 </div>
             </div>
             @can('manageAdmin', Auth::user())
@@ -33,8 +33,8 @@
                     <i class='bx bxs-user dash-icon text-green-500'></i>
                 </div>
                 <div class="">
-                    <h2 class="archive-type">User</h2>
-                    <span class="number-of-archives text-green-500">30</span>
+                    <h2 class="archive-type">Akun Pegawai</h2>
+                    <span class="number-of-archives text-green-500">{{ $users }}</span>
                 </div>
             </div>
             @endcan

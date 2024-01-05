@@ -1,7 +1,7 @@
 <div class="aside-container">
     <div class="pb-4">
         <div class="flex justify-center pb-4">
-            <img src="{{ asset('assets/img/lambang_sumsel.png') }}" alt="lambang sumsel" class="w-[80px]">
+            <img src="{{ asset('assets/img/lambang_sumsel.png') }}" alt="lambang sumsel" class="w-[90px]">
         </div>
         <div class="brand">
             <h2 class="leading-5 text-base md:text-lg text-center">
@@ -30,7 +30,7 @@
             <li class="nav-item {{ Request::is('user*') ? 'active' : '' }}">
                 <a href="/user" class="nav-link">
                     <i class='bx bxs-user nav-icon'></i>
-                    <span class="nav-text">Kelola User</span>
+                    <span class="nav-text">Kelola Pegawai</span>
                 </a>
             </li>
             @endcan

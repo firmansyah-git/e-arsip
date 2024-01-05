@@ -31,5 +31,14 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'), //admin
             'role_id' => 1
         ]);
+
+        \App\Models\User::create([
+            'nik' => '0987654321',
+            'nama' => 'pegawai',
+            'username' => 'pegawai',
+            'email' => 'pegawai@gmail.com',
+            'password' => bcrypt('pegawai'), //admin
+            'role_id' => 2
+        ]);
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_instansi', 200);
             $table->date('tanggal');
             $table->string('perihal', 100);
-            $table->text('isi');
+            $table->text('informasi_singkat');
             $table->enum('kategori', ['surat_masuk', 'surat_keluar']);
             $table->string('file_surat', 100);
         });
