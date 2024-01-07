@@ -34,8 +34,7 @@ class UserController extends Controller
             'nik' => 'required|max:16',
             'nama' => 'required|max:50',
             'username' => 'required|max:15',
-            'email' => 'required|max:50',
-            'password' => 'required',
+            'password' => 'required|min:5',
         ]);
 
         $validateData['password'] = bcrypt($validateData['password']);
@@ -79,9 +78,5 @@ class UserController extends Controller
         return redirect('user')->with('success', 'User berhasil dihapus');
     }
 
-    public function search(Request $request)
-    {
-        return dd($request);
-    }
 }
 

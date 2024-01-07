@@ -105,6 +105,8 @@
                     </div>
                     @enderror
                 </div>
+                
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <div class="">
                     <button type="submit" class="button bg-blue-600">Simpan</button>
                     <a href="/arsip" class="button bg-red-500">Kembali</a>

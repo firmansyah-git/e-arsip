@@ -44,6 +44,7 @@ class SuratController extends Controller
             'kategori' => 'required',
             'file_surat' => 'required|mimes:doc,docx,pdf,xls,xlsx|file|max:5120',
             'jenis_surat_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         if($request->file('file_surat')){
@@ -95,6 +96,7 @@ class SuratController extends Controller
             'kategori' => 'required',
             'file_surat' => 'mimes:doc,docx,pdf,xls,xlsx|file|max:5120',
             'jenis_surat_id' => 'required',
+            'user_id' => 'required',
         ];
 
         

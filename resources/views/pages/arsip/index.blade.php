@@ -96,7 +96,7 @@
                                 <i class='bx bx-show edit-icon'></i>
                             </a>
                         </td>
-                        <td class="text-center">1</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $surat->nomor_surat }}</td>
                         <td>{{ $surat->tanggal }}</td>
                         <td>{{ $surat->nama_instansi }}</td>

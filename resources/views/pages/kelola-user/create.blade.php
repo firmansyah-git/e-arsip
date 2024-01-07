@@ -50,15 +50,6 @@
                     @enderror
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="label">Email</label>
-                    <input type="email" name="email" id="email" class="input-group @error('email') is-invalid @enderror">
-                    @error('email')    
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="mb-4">
                     <label for="password" class="label">Password</label>
                     <input type="password" name="password" id="password" class="input-group @error('password') is-invalid @enderror">
                     @error('password')    

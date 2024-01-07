@@ -15,6 +15,15 @@ class JenisSurat extends Model
 
     protected $table = 'jenis_surat';
 
+    protected $guarded = ['id'];
+
+    public function scopeFilter($query, array $filter): void
+    {
+        $query->when($filter['search'] ?? false, function($query, $search){
+            return $query->where('jenis_surat', 'like', '%'. $search .'%');
+        });
+    }
+
     public function surat()
     {
         return $this->hasMany(Surat::class);

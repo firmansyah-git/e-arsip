@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JenisSuratController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
@@ -29,12 +31,14 @@ Route::resource('/arsip', SuratController::class)->middleware('auth');
 Route::get('/download/{file}', [SuratController::class, 'download'])->middleware('auth');
 
 Route::resource('/arsip', SuratController::class)->except(['index', 'show'])->middleware(IsAdmin::class);
+
 Route::resource('/user', UserController::class)->except(['show', 'edit', 'update'])->middleware(IsAdmin::class);
 Route::get('/user/search', [UserController::class, 'search'])->name('user');
 
-Route::get('/account', function () {
-    return view('pages.account');
-});
+Route::resource('/jenis_surat', JenisSuratController::class)->middleware(IsAdmin::class);
+
+Route::get('/account/{account}', [AccountController::class, 'edit']);
+Route::put('/account/{account}', [AccountController::class, 'update']);
 
 
 

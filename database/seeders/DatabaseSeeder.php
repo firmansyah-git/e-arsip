@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
             'nik' => '1234567890',
             'nama' => 'admin',
             'username' => 'admin',
-            'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'), //admin
             'role_id' => 1
         ]);
@@ -36,7 +35,6 @@ class DatabaseSeeder extends Seeder
             'nik' => '0987654321',
             'nama' => 'pegawai',
             'username' => 'pegawai',
-            'email' => 'pegawai@gmail.com',
             'password' => bcrypt('pegawai'), //admin
             'role_id' => 2
         ]);

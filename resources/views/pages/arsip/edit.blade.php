@@ -116,6 +116,7 @@
                     </div>  
                     @enderror
                 </div>
+                <input type="hidden" name="user_id" value="{{ $surat->user_id }}">
                 <div class="">
                     <button type="submit" class="button bg-blue-600">Ubah</button>
                     <a href="/arsip/{{ $surat->id }}" class="button bg-red-500">Kembali</a>

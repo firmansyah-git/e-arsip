@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nik', 16)->unique();
             $table->string('nama', 50);
-            $table->string('username', 15);
-            $table->string('email', 50)->unique();
+            $table->string('username', 15)->unique();
             $table->string('password');    
         });
     }

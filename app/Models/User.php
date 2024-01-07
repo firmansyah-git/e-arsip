@@ -51,4 +51,9 @@ class User extends Authenticatable
                 ->orWhere('email', 'like', '%'. $search .'%');
         });
     }
+
+    public function surat()
+    {
+        return $this->hasMany(Surat::class);
+    }
 }

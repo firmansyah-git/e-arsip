@@ -46,4 +46,9 @@ class Surat extends Model
     {
         return $this->belongsTo(JenisSurat::class);
     }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
