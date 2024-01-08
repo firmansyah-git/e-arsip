@@ -22,8 +22,7 @@ class Surat extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('nomor_surat', 'like', '%' . $search . '%')
                     ->orWhere('nama_instansi', 'like', '%' . $search . '%')
-                    ->orWhere('perihal', 'like', '%' . $search . '%')
-                    ->orWhere('isi', 'like', '%' . $search . '%');
+                    ->orWhere('perihal', 'like', '%' . $search . '%');
             });
         });
         

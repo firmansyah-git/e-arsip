@@ -9,6 +9,10 @@ class AccountController extends Controller
 {
     public function edit(User $account)
     {
+        if (auth()->user()->id !== $account->id) {
+            abort(403);
+        }
+
         return view('pages.account', [
             'user' => User::find($account->id),
         ]);

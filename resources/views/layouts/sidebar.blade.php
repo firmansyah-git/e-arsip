@@ -27,9 +27,9 @@
                 </a>
             </li>
             @can('manageAdmin', Auth::user())
-            <li class="nav-item {{ Request::is('jenis_surat*') ? 'active' : '' }}">
+             <li class="nav-item {{ Request::is('jenis_surat*') ? 'active' : '' }}">
                 <a href="/jenis_surat" class="nav-link">
-                    <i class='bx bxs-file-blank nav-icon'></i>
+                    <i class='bx bxs-file nav-icon'></i>
                     <span class="nav-text">Kelola Jenis Surat</span>
                 </a>
             </li>
