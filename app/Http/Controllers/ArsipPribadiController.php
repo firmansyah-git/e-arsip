@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Surat;
 use App\Models\JenisSurat;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class SuratController extends Controller
+class ArsipPribadiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.arsip.index', [
-            'surats' => Surat::filter(request(['search', 'kategori', 'jenis', 'tahun']))->where('akses_surat_pribadi', 0)->with('jenisSurat')->paginate(10),
+        return view('pages.arsip-pribadi.index', [
+            'surats' => Surat::filter(request(['search', 'kategori', 'jenis', 'tahun']))->where('akses_surat_pribadi', 1)->with('jenisSurat')->paginate(10),
             'jenis_surat' => JenisSurat::all()
         ]);
     }
@@ -25,7 +24,7 @@ class SuratController extends Controller
      */
     public function create()
     {
-        return view('pages.arsip.create', [
+        return view('pages.arsip-pribadi.create', [
             'jenis_surat' => JenisSurat::all()
         ]);
     }
@@ -41,13 +40,13 @@ class SuratController extends Controller
             'tanggal' => 'required|max:255',
             'perihal' => 'required',
             'informasi_singkat' => 'required',
-            'kategori' => 'required',
             'file_surat' => 'required|mimes:doc,docx,pdf,xls,xlsx|file|max:5120',
             'jenis_surat_id' => 'required',
             'user_id' => 'required',
         ]);
 
-        $validateData['akses_surat_pribadi'] = 0 ;
+        $validateData['kategori'] = 'surat_pribadi' ;
+        $validateData['akses_surat_pribadi'] = 1 ;
 
         if($request->file('file_surat')){
             $file = $request->file('file_surat');
@@ -60,26 +59,26 @@ class SuratController extends Controller
         
         Surat::create($validateData);
 
-        return redirect('arsip')->with('success', 'Data surat berhasil ditambahkan');
+        return redirect('arsip_pribadi')->with('success', 'Data surat berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Surat $arsip)
+    public function show(Surat $arsip_pribadi)
     {
-        return view('pages.arsip.detail', [
-           'surat' => $arsip
-        ]);
+        return view('pages.arsip-pribadi.detail', [
+            'surat' => $arsip_pribadi
+         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Surat $arsip)
+    public function edit(Surat $arsip_pribadi)
     {
-        return view('pages.arsip.edit', [
-            'surat' => Surat::find($arsip->id),
+        return view('pages.arsip-pribadi.edit', [
+            'surat' => Surat::find($arsip_pribadi->id),
             'jenis_surat' => JenisSurat::all()
         ]);
     }
@@ -87,7 +86,7 @@ class SuratController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Surat $arsip)
+    public function update(Request $request, Surat $arsip_pribadi)
     {
         $rules = [
             'nomor_surat' => 'required|max:50',
@@ -95,14 +94,13 @@ class SuratController extends Controller
             'tanggal' => 'required|max:255',
             'perihal' => 'required',
             'informasi_singkat' => 'required',
-            'kategori' => 'required',
             'file_surat' => 'mimes:doc,docx,pdf,xls,xlsx|file|max:5120',
             'jenis_surat_id' => 'required',
             'user_id' => 'required',
         ];
 
         
-        if($request->nomor_surat != $arsip->nomor_surat){
+        if($request->nomor_surat != $arsip_pribadi->nomor_surat){
             $rules['nomor_surat'] = 'required|unique:surat|max:50';
         }
         
@@ -124,22 +122,22 @@ class SuratController extends Controller
 
         
 
-        Surat::where('id',$arsip->id)->update($validateData);
+        Surat::where('id',$arsip_pribadi->id)->update($validateData);
 
-        return redirect('arsip')->with('success', 'Data surat berhasil diedit');
+        return redirect('arsip_pribadi')->with('success', 'Data surat berhasil diedit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Surat $arsip)
+    public function destroy(Surat $arsip_pribadi)
     {
-        $fileToDelete = public_path('file_arsip/' . $arsip->file_surat);
+        $fileToDelete = public_path('file_arsip/' . $arsip_pribadi->file_surat);
             if (file_exists($fileToDelete)) {
                 unlink($fileToDelete);
             }
-        Surat::destroy($arsip->id);
-        return redirect('arsip')->with('success', 'Data surat berhasil dihapus');
+        Surat::destroy($arsip_pribadi->id);
+        return redirect('arsip_pribadi')->with('success', 'Data surat berhasil dihapus');
     }
 
     public function download($file)

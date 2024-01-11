@@ -16,10 +16,15 @@ class DatabaseSeeder extends Seeder
 
         
         \App\Models\RoleUser::create([
+            'id' => 1,
             'role' => 'admin',
         ]);
-
         \App\Models\RoleUser::create([
+            'id' => 2,
+            'role' => 'kepala',
+        ]);
+        \App\Models\RoleUser::create([
+            'id' => 3,
             'role' => 'pegawai',
         ]);
         
@@ -36,6 +41,14 @@ class DatabaseSeeder extends Seeder
             'nama' => 'pegawai',
             'username' => 'pegawai',
             'password' => bcrypt('pegawai'), //admin
+            'role_id' => 3
+        ]);
+
+        \App\Models\User::create([
+            'nik' => '0123456789012',
+            'nama' => 'kepala',
+            'username' => 'kepala',
+            'password' => bcrypt('kepala'), //admin
             'role_id' => 2
         ]);
     }

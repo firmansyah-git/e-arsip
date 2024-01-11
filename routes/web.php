@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ArsipPribadiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisSuratController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsPimpinan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,8 @@ Route::resource('/user', UserController::class)->except(['show', 'edit', 'update
 Route::get('/user/search', [UserController::class, 'search'])->name('user');
 
 Route::resource('/jenis_surat', JenisSuratController::class)->middleware(IsAdmin::class);
+
+Route::resource('/arsip_pribadi', ArsipPribadiController::class)->middleware(IsPimpinan::class);
 
 Route::get('/account/{account}', [AccountController::class, 'edit']);
 Route::put('/account/{account}', [AccountController::class, 'update']);

@@ -18,4 +18,9 @@ class UserRolePolicy
     {
         return $user->role_id == '1';
     }
+
+    public function managePimpinan(User $user)
+    {
+        return $user->role_id == '2';
+    }
 }

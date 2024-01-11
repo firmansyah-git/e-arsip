@@ -18,8 +18,9 @@ return new class extends Migration
             $table->date('tanggal');
             $table->text('perihal');
             $table->text('informasi_singkat');
-            $table->enum('kategori', ['surat_masuk', 'surat_keluar']);
+            $table->enum('kategori', ['surat_masuk', 'surat_keluar', 'surat_pribadi']);
             $table->string('file_surat', 100);
+            $table->boolean('akses_surat_pribadi');
         });
     }
 

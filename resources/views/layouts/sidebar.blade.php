@@ -20,7 +20,15 @@
                     
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('arsip*') ? 'active' : '' }}">
+            @can('managePimpinan', Auth::user())
+            <li class="nav-item {{ Request::is('arsip_pribadi*') ? 'active' : '' }}">
+                <a href="/arsip_pribadi" class="nav-link">
+                    <i class='bx bxs-file-blank nav-icon'></i>
+                    <span class="nav-text">Arsip Pribadi</span>
+                </a>
+            </li>
+            @endcan
+            <li class="nav-item {{ Request::is('arsip', 'arsip/*') ? 'active' : '' }}">
                 <a href="/arsip" class="nav-link">
                     <i class='bx bxs-file-blank nav-icon'></i>
                     <span class="nav-text">Arsip</span>

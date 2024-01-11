@@ -23,7 +23,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
 
         Surat::create([
@@ -35,7 +36,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
         Surat::create([
             'nomor_surat' => '800/640/IV.2/2023',
@@ -46,7 +48,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
         Surat::create([
             'nomor_surat' => '020.1/685/IV.2/2023',
@@ -57,7 +60,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
         Surat::create([
             'nomor_surat' => '800/722/IV.2/2023',
@@ -68,7 +72,9 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false,
+            
         ]);
         Surat::create([
             'nomor_surat' => '800/1105/PBJ/VI/2023',
@@ -79,7 +85,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_keluar',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
         Surat::create([
             'nomor_surat' => '400/0069/III/I/2023',
@@ -90,7 +97,8 @@ class SuratSeeder extends Seeder
             'kategori' => 'surat_masuk',
             'file_surat' => 'example.pdf',
             'jenis_surat_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'akses_surat_pribadi' => false
         ]);
     }
 }
